@@ -8,9 +8,8 @@ pipeline{
     stage('Git Checkout') {
             steps{
                
-                gitCheckout(
-                    branch: "master",
-                    url: "https://github.com/Indianche/simplewebapp.git"
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, 
+                          extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Indianche/demopipeline.git']]])
                 )
             }
         }
